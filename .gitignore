@@ -1,0 +1,41 @@
+# ---- 공통 / 에디터 ----
+.idea/
+.vscode/
+*.iml
+
+# ---- OS 잡동사니 ----
+.DS_Store
+Thumbs.db
+
+# ---- Python (server) ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# 가상환경
+venv/
+.venv/
+env/
+
+# pipenv lock 파일은 팀별로 버전 고정 안 할 거면 제외
+Pipfile.lock
+
+# 환경 변수 / 민감 정보 (루트/하위 포함)
+.env
+**/.env
+
+# ---- Node/React (client) ----
+client/node_modules/
+client/.npm/
+client/.pnp/
+client/.pnp.js
+client/yarn.lock
+client/package-lock.json
+client/dist/
+client/build/
+client/coverage/
+
+# ---- 기타 로그 / 캐시 ----
+*.log
+.cache/
