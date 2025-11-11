@@ -19,12 +19,14 @@ def create_app():
     # 블루프린트 등록
     from .router.auth_router import auth_bp
     from .router.user_router import user_bp  # 파일명이 user_model.py라 user_router.py로 바꾸는 게 나음
+    from .router.comment_router import comment_bp
     # post_router, comment_router 추가 시 아래처럼
     # from .router.post_router import post_bp
     # from .router.comment_router import comment_bp
 
     app.register_blueprint(auth_bp, url_prefix="/api/auth")
     app.register_blueprint(user_bp, url_prefix="/api/users")
+    app.register_blueprint(comment_bp, url_prefix="/api/comment")
     # app.register_blueprint(post_bp, url_prefix="/api/posts")
 
     # DB 테이블 생성 (개발 단계에서만)
