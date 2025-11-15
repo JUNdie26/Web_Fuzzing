@@ -1,5 +1,5 @@
 # post_app.py
-from models import db, Post
+from model.post_model import db, Post
 from datetime import datetime
 
 class PostService:
@@ -58,3 +58,4 @@ class PostService:
                 "created_at": post.created_at.strftime("%Y-%m-%d %H:%M:%S")
             }
         }, 200
+
