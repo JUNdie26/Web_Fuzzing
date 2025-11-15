@@ -1,5 +1,5 @@
 from flask import Blueprint, request, session
-from post_app import PostService
+from app.post_app import PostService
 
 post_bp = Blueprint("post", __name__)
 
@@ -18,3 +18,4 @@ def create_post():
 @post_bp.route("/api/post/<int:post_id>", methods=["GET"])
 def read_post(post_id):
     return PostService.get_post(post_id)
+
