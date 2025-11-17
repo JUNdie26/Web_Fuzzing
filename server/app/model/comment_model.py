@@ -17,12 +17,13 @@ def connect_db():
     return db
 
 # comment 테이블에 댓글 추가
-def add_comment(user_uuid, post_uuid, comment_content):
+# user_id를 이용해 테이블에 데이터를 추가해야함
+def add_comment(user_id, post_uuid, comment_content):
     db = connect_db()
     sql = """
         INSERT INTO comment(user_uuid, post_uuid, comment_content)
-        VALUES (%s, %s, %s);
-    """ % user_uuid, post_uuid, comment_content
+        VALUES ((SELECT user_uuid FROM user WHERE user_id = '%s'), %s, '%s');
+    """ % (user_id, post_uuid, comment_content)
     cursor = db.cursor(pymysql.cursors.DictCursor)
     cursor.execute(sql)
     db.commit()
