@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #0f1624;
+  color: white;
+  font-family: "Pretendard", sans-serif;
+}
+
+.container {
+  width: 460px;
+  margin: 60px auto;
+  background: #1b2436;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.35);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #27324a;
+  color: white;
+  font-size: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #4f6cff;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #6d85ff;
+}
+
+.post-card {
+  background: #27324a;
+  padding: 18px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.post-card:hover {
+  background: #323f5a;
+}
+
+.navbar {
+  width: 100%;
+  padding: 14px;
+  background: #131a29;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  color: #6d85ff;
+}
