@@ -1,0 +1,39 @@
+# --- OS / IDE 쓰레기 ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# --- Python (server) ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 가상환경 (혹시 프로젝트 안에 만들 경우)
+.venv/
+venv/
+
+# Pipenv 캐시
+server/.pytest_cache/
+server/.mypy_cache/
+
+# 환경 변수 & 민감 정보
+server/.env
+
+# --- Node / React (client) ---
+client/node_modules/
+client/dist/
+client/.vite/
+client/.eslintcache
+
+# 빌드 결과물 (혹시 template 쪽에서도 빌드하면)
+template/dist/
+
+# 로그 / 임시 파일
+*.log
+*.tmp
+
+# OS 별 백업
+*~
+*.swp
