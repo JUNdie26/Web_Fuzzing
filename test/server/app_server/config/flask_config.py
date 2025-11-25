@@ -1,9 +1,11 @@
 import os
 from dotenv import load_dotenv
 
+# 프로젝트 루트(.env 있는 위치) 기준으로 로드
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ENV_PATH = os.path.join(BASE_DIR, ".env")
 load_dotenv(ENV_PATH)
+
 
 class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False

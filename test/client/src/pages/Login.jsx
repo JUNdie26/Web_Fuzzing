@@ -10,17 +10,19 @@ function Login({ setUser }) {
   const submit = async () => {
     try {
       const res = await axios.post("/auth/login", { user_id, password });
+
       if (res.data.ok) {
         // 로그인 상태 저장
         if (setUser) {
           setUser(res.data.user);
         }
         alert("로그인 성공!");
-        navigate("/posts");
+        navigate("/post"); // 로그인 후 게시글 목록 화면으로
       } else {
         alert(res.data.error || "로그인 실패");
       }
     } catch (e) {
+      console.error(e);
       alert("로그인 중 오류가 발생했습니다.");
     }
   };
@@ -31,11 +33,13 @@ function Login({ setUser }) {
 
       <input
         placeholder="아이디"
+        value={user_id}
         onChange={(e) => setId(e.target.value)}
       />
       <input
         type="password"
         placeholder="비밀번호"
+        value={password}
         onChange={(e) => setPw(e.target.value)}
       />
 

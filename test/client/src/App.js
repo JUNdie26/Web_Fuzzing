@@ -24,7 +24,8 @@ function App() {
     try {
       await axios.post("/auth/logout");
     } catch (e) {
-      // 서버 에러 나도 프론트 상태는 초기화
+      console.error(e);
+      // 서버에서 에러 나도 프론트 상태는 초기화
     }
     setUser(null);
   };
@@ -39,7 +40,7 @@ function App() {
             path="/"
             element={
               isLoggedIn ? (
-                <Navigate to="/posts" />
+                <Navigate to="/post" />
               ) : (
                 <Login setUser={setUser} />
               )
@@ -51,7 +52,7 @@ function App() {
             path="/login"
             element={
               isLoggedIn ? (
-                <Navigate to="/posts" />
+                <Navigate to="/post" />
               ) : (
                 <Login setUser={setUser} />
               )
@@ -61,25 +62,25 @@ function App() {
           {/* 회원가입 */}
           <Route
             path="/register"
-            element={isLoggedIn ? <Navigate to="/posts" /> : <Register />}
+            element={isLoggedIn ? <Navigate to="/post" /> : <Register />}
           />
 
           {/* 게시글 목록 */}
           <Route
-            path="/posts"
+            path="/post"
             element={isLoggedIn ? <PostList /> : <Navigate to="/login" />}
           />
 
           {/* 게시글 상세 페이지 */}
           <Route
-            path="/posts/:id"
+            path="/post/:id"
             element={isLoggedIn ? <PostDetail /> : <Navigate to="/login" />}
           />
 
-          {/* 글쓰기 페이지 */}
+          {/* 글쓰기 페이지: /post/create */}
           <Route
-            path="/write"
-            element={isLoggedIn ? <Write /> : <Navigate to="/login" />}
+            path="/post/create"
+            element={isLoggedIn ? <Write user={user} /> : <Navigate to="/login" />}
           />
         </Routes>
       </div>
