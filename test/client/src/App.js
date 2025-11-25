@@ -1,3 +1,4 @@
+// client/src/App.js
 import React, { useState } from "react";
 import {
   BrowserRouter as Router,
@@ -25,7 +26,6 @@ function App() {
       await axios.post("/auth/logout");
     } catch (e) {
       console.error(e);
-      // 서버에서 에러 나도 프론트 상태는 초기화
     }
     setUser(null);
   };
@@ -71,13 +71,13 @@ function App() {
             element={isLoggedIn ? <PostList /> : <Navigate to="/login" />}
           />
 
-          {/* 게시글 상세 페이지 */}
+          {/* 게시글 상세 */}
           <Route
             path="/post/:id"
             element={isLoggedIn ? <PostDetail /> : <Navigate to="/login" />}
           />
 
-          {/* 글쓰기 페이지: /post/create */}
+          {/* 글쓰기 */}
           <Route
             path="/post/create"
             element={isLoggedIn ? <Write user={user} /> : <Navigate to="/login" />}

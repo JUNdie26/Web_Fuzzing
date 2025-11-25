@@ -12,25 +12,25 @@ function Login({ setUser }) {
       const res = await axios.post("/auth/login", { user_id, password });
 
       if (res.data.ok) {
-        // 로그인 상태 저장
-        if (setUser) {
-          setUser(res.data.user);
-        }
-        alert("로그인 성공!");
-        navigate("/post"); // 로그인 후 게시글 목록 화면으로
+        setUser && setUser(res.data.user);
+        alert("로그인 성공");
+        navigate("/post");
       } else {
         alert(res.data.error || "로그인 실패");
       }
     } catch (e) {
+      const msg =
+        e.response?.data?.error ||
+        e.response?.data?.detail ||
+        "로그인 중 오류가 발생했습니다.";
+      alert(msg);
       console.error(e);
-      alert("로그인 중 오류가 발생했습니다.");
     }
   };
 
   return (
     <div className="container">
       <h2>로그인</h2>
-
       <input
         placeholder="아이디"
         value={user_id}
@@ -42,15 +42,7 @@ function Login({ setUser }) {
         value={password}
         onChange={(e) => setPw(e.target.value)}
       />
-
       <button onClick={submit}>로그인</button>
-
-      <button
-        onClick={() => navigate("/register")}
-        style={{ background: "#3a4b6b" }}
-      >
-        회원가입
-      </button>
     </div>
   );
 }

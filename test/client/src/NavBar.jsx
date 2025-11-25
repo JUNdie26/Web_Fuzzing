@@ -1,3 +1,4 @@
+// client/src/NavBar.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
@@ -7,8 +8,8 @@ function NavBar({ isLoggedIn, onLogout }) {
     <div className="navbar">
       {isLoggedIn ? (
         <>
-          <Link to="/posts">게시글 목록</Link>
-          <Link to="/write">글쓰기</Link>
+          <Link to="/post">게시글 목록</Link>
+          <Link to="/post/create">글쓰기</Link>
           <button
             onClick={onLogout}
             className="navbar-button"

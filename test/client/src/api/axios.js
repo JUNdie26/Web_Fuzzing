@@ -1,9 +1,10 @@
-// src/api/axios.js
+// client/src/api/axios.js
 import axios from "axios";
 
-const instance = axios.create({
-  baseURL: "http://localhost:5000",  // 🔥 Flask 서버 주소/포트 맞추기
-  withCredentials: true,             // 세션/쿠키 쓰면 유지
+const api = axios.create({
+  baseURL: "http://localhost:5000", // Flask 서버 주소
+  // 세션 쿠키 안 쓸 거면 withCredentials 안 써도 됨
+  // withCredentials: true,
 });
 
-export default instance;
+export default api;

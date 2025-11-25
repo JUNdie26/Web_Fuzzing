@@ -1,6 +1,6 @@
-// src/pages/Write.jsx
+// client/src/pages/Write.jsx
 import React, { useState } from "react";
-import axios from "../api/axios";              // ❗ 반드시 이 경로
+import axios from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
 function Write({ user }) {
@@ -16,21 +16,33 @@ function Write({ user }) {
       return;
     }
 
-    // TODO: 실제 로그인 유저 구조에 맞게 수정
-    const user_id = user?.user_uuid || user?.id || 1;
+    console.log("Write user =", user);
+    const user_uuid = user?.user_uuid;   // ★ 여기
+
+    if (!user_uuid) {
+      alert("로그인 정보가 없습니다. 다시 로그인 해 주세요.");
+      return;
+    }
 
     try {
-      await axios.post("/post/api/post_create", {
+      const res = await axios.post("/post/api/post_create", {
         title,
         content,
-        user_id,
+        user_uuid,  // ★ 이 이름으로 보냄
       });
 
+      console.log("post_create response:", res.data);
       alert("게시글이 등록되었습니다.");
-      navigate("/post");          // 작성 후 목록으로
+      navigate("/post");
     } catch (err) {
-      console.error(err);
-      alert("게시글 등록 중 오류가 발생했습니다.");
+      console.error("post_create error:", err.response?.data || err.message);
+
+      const data = err.response?.data;
+      const msg =
+        data?.error ||
+        data?.detail ||
+        "게시글 등록 중 오류가 발생했습니다.";
+      alert(msg);
     }
   };
 
