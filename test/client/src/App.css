@@ -79,3 +79,16 @@ button:hover {
 .navbar a:hover {
   color: #6d85ff;
 }
+.navbar button,
+.navbar-button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navbar button:hover,
+.navbar-button:hover {
+  color: #6d85ff;
+}
